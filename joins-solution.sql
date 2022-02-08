@@ -23,12 +23,16 @@ JOIN "warehouse" ON "warehouse"."id" = "warehouse_id"
 WHERE "description" = 'diet pepsi';
 
 -- Get the number of orders for each customer. NOTE: It is OK if those without orders are not included in results.
-
+SELECT "first_name", "last_name", count(*) AS "number of orders" from "orders"
+JOIN "addresses" ON "addresses"."id" = "orders"."address_id"
+JOIN "customers" ON "customers"."id" = "addresses"."customer_id"
+GROUP BY "first_name", "last_name";
 
 -- How many customers do we have?
-
+SELECT count(*) FROM "customers"; 
 
 -- How many products do we carry?
+SELECT count("products"."description") FROM "products";
 
 
 -- What is the total available on-hand quantity of diet pepsi?
